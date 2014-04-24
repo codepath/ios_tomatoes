@@ -10,4 +10,6 @@
 
 @interface MoviesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic, strong) NSString *movieType;
+
 @end

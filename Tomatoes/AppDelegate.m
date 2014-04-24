@@ -15,9 +15,24 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:[[MoviesViewController alloc] init]];
     
-    self.window.rootViewController = nvc;
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    
+    MoviesViewController *moviesViewController = [[MoviesViewController alloc] init];
+    moviesViewController.movieType = @"Box Office";
+    UINavigationController *moviesNavigationController = [[UINavigationController alloc] initWithRootViewController:moviesViewController];
+    moviesNavigationController.tabBarItem.title = @"Box Office";
+    moviesNavigationController.tabBarItem.image = [UIImage imageNamed:@"ticket"];
+    
+    MoviesViewController *dvdsViewController = [[MoviesViewController alloc] init];
+    dvdsViewController.movieType = @"Top DVDs";
+    UINavigationController *dvdsNavigationController = [[UINavigationController alloc] initWithRootViewController:dvdsViewController];
+    dvdsNavigationController.tabBarItem.title = @"Top DVDs";
+    dvdsNavigationController.tabBarItem.image = [UIImage imageNamed:@"dvd"];
+    
+    tabBarController.viewControllers = @[moviesNavigationController, dvdsNavigationController];
+    
+    self.window.rootViewController = tabBarController;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
